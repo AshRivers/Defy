@@ -1,0 +1,10 @@
+<%= way.label :from_storypoint %> </br>
+<%= select_tag("way[from_storypoint]",
+	options_for_select(Storypoint.all.collect {|storypoint| [storypoint.name,storypoint.id]})) %> </br>
+
+<%= way.label :to_storypoint %> </br>
+<%= select_tag("way[to_storypoint]",
+	options_for_select(Storypoint.all.collect {|storypoint| [storypoint.name,storypoint.id]})) %> </br>
+
+<%= way.label :with_text %> </br>
+<%= way.text_field :with_text %> </br>

@@ -1,0 +1,3 @@
+<% @pictures.each do |pic| %>
+  <%= image_tag pic.image_url if pic.image? %>
+<% end %>

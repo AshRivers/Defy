@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class = "user_page">
+<div class = "user_image">
+  <%= image_tag @user.image_url(:thumb) if @user.image? %>
+</div>
+
+<div class = "user_info">
+<div id = "user_name"><%= @user.name %></div>
+<% if current_user %>
+  <div id = "user_email"><%= @user.email %> <div id="edit_link"><%= link_to 'Edit', edit_user_path(@user) %></div></div>
+  
+<% end %>
+</div>
+
+
+
+<div class = "collapse_wrapper">
+  <div class = "controls"><%= link_to "(new)", new_plot_path %></div>
+<div class='collapse' data-collapse>
+  <p>Plots</p>
+  <div id = "data_in_collapse">
+  <% Plot.where(user_id: @user).each do |plot| %>
+    <p>
+      <%= link_to plot.name, plot %>
+    </p>
+  <% end %>
+  </div> 
+</div>
+</div>
+</div>

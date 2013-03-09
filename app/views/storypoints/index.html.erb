@@ -1,0 +1,26 @@
+<h1>Plot's storypoints</h1>
+<p>
+	<%= link_to "All Storypoints", all_stp_path %> | 
+	<%= link_to "Personal storypoints", storypoints_path %>
+</p>
+<ul>
+	<% @plot.each do |plot| %>
+		<li>
+			<h1>Plot: <%= link_to plot.name, plot %></h1>
+			<ul>
+				<% @storypoints.each do |stp| %>
+					<% if stp. plot_id == plot.id %>
+						<li>
+							<%= link_to stp.name, plot_storypoint_path(plot,stp) %>
+						</br>
+							<% if plot.user_id == current_user.id %>
+								<%= button_to "Delete", plot_storypoint_path(plot, stp), :method => :delete,
+					 					data: {confirm: "Are you sure"}, title: "Delete this" %>
+							<% end %>
+						</li>
+					<% end %>
+				<% end %>
+			</ul>
+		</li>
+	<% end %>
+</ul>

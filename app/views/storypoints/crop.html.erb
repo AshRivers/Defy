@@ -1,0 +1,13 @@
+<h1> Crop Your Image</h1>
+
+<%= image_tag @storypoint.image_url(:extra_large), id: 'cropbox_for_stp' %>
+
+<%= form_for([@plot,@storypoint]) do |f| %>
+		<%= f.hidden_field :crop_x %>
+		<%= f.hidden_field :crop_y %>
+		<%= f.hidden_field :crop_w %>
+		<%= f.hidden_field :crop_h %>
+	<div class="actions">
+		<%= f.submit "Crop" %>
+	</div>
+<% end %>

@@ -1,0 +1,18 @@
+<h1> Crop Your Image</h1>
+
+<h4>Prev</h4>
+<div style="width:100px; height:100px; overflow:hidden">
+	<%= image_tag stp.image.url(:large), id: 'preview' %>
+</div>
+
+<%= image_tag stp.image_url(:large), id: 'cropbox' %>
+
+<%= form_for([:plot,stp]) do |f| %>
+		<%= f.hidden_field :crop_x %>
+		<%= f.hidden_field :crop_y %>
+		<%= f.hidden_field :crop_w %>
+		<%= f.hidden_field :crop_h %>
+	<div class="actions">
+		<%= f.submit "Crop" %>
+	</div>
+<% end %>

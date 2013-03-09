@@ -1,0 +1,16 @@
+
+<div class = "pre_play">
+	<% @plots.each do |plot| %>
+		<%= link_to play_path(plot) do %>
+		<div class="view view-ninth">
+			<%= image_tag plot.poster.url(:plot_poster) %>
+		  	<div class = "mask mask-1"></div>
+		  	<div class = "mask mask-2"></div>
+		  	<div class = "content">
+		  	    <h2><%= link_to plot.name, play_path(plot) %></h2>
+		  		 	<%= User.find(plot.user_id).name %>
+		  	</div>
+	  	</div>
+	  	<% end %>
+	<% end %>
+</div>

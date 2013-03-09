@@ -1,0 +1,26 @@
+<h1>Listing plots</h1>
+
+<%= link_to 'New Plot', new_plot_path %>
+<div class = 'collapse' data-collapse>
+  <% @plots.each do |plot| %>
+    <h2><%= link_to plot.name, plot %></h2>
+    <ul>
+      <li>Writer: <%= link_to User.find(plot.user_id).name, user_path(plot.user_id) %></li>
+  
+      <% unless plot.first_stp.nil? %>
+        <li>
+            first_stp: <%= link_to Storypoint.find(plot.first_stp).name,
+                                                   plot_storypoint_path(plot, plot.first_stp) %>
+        </li>  
+      <% end %>
+
+      <% if plot.user_id == current_user.id %> 
+        <li>
+            <%= link_to 'Edit', edit_plot_path(plot) %> </br>
+            <%= link_to 'Show Details', plot_path(plot) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+

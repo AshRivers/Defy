@@ -1,0 +1,21 @@
+<h1>Ways - index</h1>
+<ul>
+<% @ways.each do |way| %>
+	<li>
+	From:	<%= link_to Storypoint.find(way.from_storypoint).name, 
+					plot_storypoint_path(	Storypoint.find(way.from_storypoint).plot_id, 
+											way.from_storypoint) %>
+	</br>
+	To:	<%= link_to Storypoint.find(way.to_storypoint).name, 
+					plot_storypoint_path(	Storypoint.find(way.to_storypoint).plot_id, 
+											way.to_storypoint) %>
+	</br>
+	With:	<%= way.with_text %>
+	</br>
+		<%= link_to 'edit way', edit_way_path(way) %>
+	</br>
+		<%= button_to "Delete", way, :method => :delete,
+	 data: {confirm: "Are you sure"}, title: "Delete this" %>
+	</li>
+<% end %>
+</ul>

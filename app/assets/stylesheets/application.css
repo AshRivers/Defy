@@ -1,0 +1,471 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jquery.Jcrop
+ *= require jquery.mCustomScrollbar
+ *= require jNotify.jquery
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+	background: #CCCCCC;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.yield {
+	background-color: #3d4040;
+	color: white;
+	padding: 2%;
+	margin-top: 2%;
+		overflow: auto;
+}
+
+.container {
+	width:1000px;
+	margin-top: 0;
+	padding-top: 0;
+	margin-left:auto;
+	margin-right:auto;
+	background-color: #707a7a;
+}
+
+.strict {
+}
+
+.flash {
+	/*background-color: red;*/
+}
+
+header {
+	padding-bottom: 20px;
+}
+
+footer {
+	padding-top: 10px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	background-color: white;
+}
+
+nav {
+	
+  	white-space: nowrap;
+  	float: left;
+  	/*padding-bottom: 100%*/
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	 
+}
+ nav ul li {
+ 	-webkit-box-shadow: inset 1px 1px 5px 0px black;
+	box-shadow: inset 1px 1px 5px 0px black;
+ 	background-color: #3d4040;
+ 	list-style-type: none;
+ 	display: inline-block;
+ 	padding: 8px;
+ }
+
+ a {
+ 	color: orange;
+ 	font-weight: bold;
+ 	text-decoration: none;
+ }
+
+ a:hover {
+ 	color: #DE8900;
+ }
+
+
+
+ .play {
+	width:8em;
+	height:8em;
+	border-radius:50%;
+	position:relative;
+	border: 1em solid orange;	
+
+	box-shadow: inset 1px 1px 2px 2px black; 
+	-webkit-box-shadow: inset 1px 1px 2px 2px black; 
+}
+
+.play::before {
+	position: absolute;
+	content: "";
+	top: 0.8em;
+	left: 3em;
+	width: 0em;
+	height: 0em;
+	border-top: 3.2em solid rgba(44, 44, 44, 0);
+	border-bottom: 3.2em solid transparent;
+	border-left: 3.2em solid orange;
+}
+
+.playwrapper{
+	width: 1px;
+	margin-left: 41.5%;
+	margin-right: auto;
+}
+.play:hover {
+	border: 1em solid #DE8900;
+}
+
+.play:hover::before {
+	border-left: 3.2em solid #DE8900;
+}
+
+#headline {
+	text-align: center;
+	font-family: Garamond,serif;
+	color: #EDEDED;
+	font-weight: bold;
+	font-size: 6em;
+	text-shadow: 5px 5px 8px black;
+	line-height: 0.5;
+	margin-top: 4%;
+}
+
+.step2 {
+	display: none;
+}
+
+.image_place{;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	/*	-webkit-box-shadow: inset 1px 1px 1px 10px ;
+box-shadow: inset 1px 1px 1px 10px ; */
+	/*display: inline;*/
+}
+
+.play_box {
+	width: 100%;
+	display: inline-block;
+	position: relative;
+	overflow: auto;
+}
+
+.story_place {
+	-webkit-box-shadow: inset 5px 5px 300px 100px #3d4040;
+	box-shadow: inset 5px 5px 300px 100px #3d4040;
+background: rgba(82, 76, 82, 0.8);
+	width: 40%;
+	max-height: 80%;
+/*	height: 60%;*/
+	overflow: auto;
+	display: inline-block;
+	position: absolute;
+	top:30px;  
+    left:200px;
+    width: 600px;
+    padding: 1.5em;
+	/*float: right;*/
+}
+
+.story_without_image_place {
+	min-height: 200px;
+}
+
+.storytext_without_image {
+
+}
+
+.storytext {
+	opacity: 1;
+	text-align: center;
+	text-indent: 1.5em;
+	font-family: Georgia,serif;
+	color: #EDEDED;
+	line-height: 1.4;
+	/*letter-spacing: 1pt;*/
+	word-spacing: 1.5pt;
+	overflow: auto;
+	/*font-weight: bold;*/
+}
+
+.ways_place {
+	text-align: center;
+	margin: 2% 0;
+}
+
+._info {
+	/*display: inline;*/
+	width: 100%;
+	/*float: left;*/
+	margin-bottom: 0;
+	padding-bottom: 0;
+	display: inline;
+	/*min-height: 300px;*/
+/*	padding-right: 0;
+	margin-right: 0;*/
+}
+
+._info h2 form {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	display: inline-block;
+}
+
+#_story {
+	/*height: 200px;*/
+	/*width: 100%;
+ display:block;
+ text-overflow: ellipsis;
+ -o-text-overflow: ellipsis;
+ -ms-text-overflow: ellipsis;
+ overflow: hidden;
+ white-space: nowrap;*/
+}
+
+._poster_show {
+	/*float: right;*/
+	margin-left: 60%;
+	margin-right: 0;
+	padding-right: 0;
+	width: 40%;
+}
+
+.new_edit_links {
+	margin-top: 1em;
+	padding-top: 1em;
+	/*float: left;*/
+}
+
+._info_with_links {
+	float: left;
+	width: 60%;
+	padding-right: 3em;
+
+}
+
+.pre_play {
+	overflow: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.view {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    float: left;
+    /*border: 10px solid #fff;*/
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    /*box-shadow: 1px 1px 5px 1px orange;*/
+    cursor: default;
+    background: #fff
+}
+.view .mask, .view .content {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+.view img {
+    display: block;
+    position: relative;
+}
+.view h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 20px 0 0 0
+}
+.view p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 20px;
+    text-align: center
+}
+.view a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+}
+.view a.info:hover {
+    box-shadow: 0 0 5px #000
+}
+
+
+
+
+
+
+
+
+.view-ninth .mask-1,
+.view-ninth .mask-2{
+    background-color: rgba(0,0,0,0.5);
+    height: 461px;
+    width: 461px;
+    background: rgba(119,0,36,0.5);
+    opacity: 1;
+    transition: all 0.3s ease-in-out 0.6s;
+    -webkit-transition: all 0.3s ease-in-out 0.6s;
+}
+.view-ninth .mask-1 {
+    left: auto;
+    right: 0px;
+    transform: rotate(56.5deg) translateX(-300px);
+    transform-origin: 100% 0%;
+    -webkit-transform: rotate(56.5deg) translateX(-300px);
+    -webkit-transform-origin: 100% 0%;
+}
+.view-ninth .mask-2 {
+    top: auto;
+    bottom: 0px;
+    transform: rotate(56.5deg) translateX(300px);
+    transform-origin: 0% 100%;
+    -webkit-transform: rotate(56.5deg) translateX(300px);
+    -webkit-transform-origin: 0% 100%;
+}
+
+.view-ninth .content{
+    background: rgba(0,0,0,0.9);
+    height: 0px;
+    opacity: 0.5;
+    width: 361px;
+    overflow: hidden;
+    transform: rotate(-45deg) translate(-112px,210px);
+    transform-origin: 0% 100%;
+    transition: all 0.4s ease-in-out 0.3s;
+    -webkit-transform: rotate(-45deg) translate(-112px,210px);
+    -webkit-transform-origin: 0% 100%;
+    -webkit-transition: all 0.4s ease-in-out 0.3s;
+}
+.view-ninth h2{
+    background: transparent;
+    margin-top: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.view-ninth a.info{
+    display: none;
+}
+
+.view-ninth:hover .content{
+    height: 120px;
+    width: 300px;
+    opacity: 0.9;
+    top: 90px;
+    transform: rotate(0deg) translate(0px,0px);
+    -webkit-transform: rotate(0deg) translate(0px,0px);
+}
+.view-ninth:hover .mask-1,
+.view-ninth:hover .mask-2{
+    transition-delay: 0s;
+}
+.view-ninth:hover .mask-1{
+    transform: rotate(35.5deg) translateX(1px);
+    -webkit-transform: rotate(35.5deg) translateX(1px);
+}
+.view-ninth:hover .mask-2 { 
+    transform: rotate(35.5deg) translateX(-1px);
+    -webkit-transform: rotate(35.5deg) translateX(-1px);
+}
+
+
+#data_in_collapse{
+	text-indent: 2em;
+}
+
+
+.poster_wrapper {
+
+}
+
+.user_image {
+	float: left;
+}
+
+.user_info {
+	padding-left: 1em;
+	margin-left: 100px;	
+}
+
+#user_name{
+	padding: 5px;
+	font-weight: bold;
+	font-size: 23px;
+}
+
+#user_email{
+	padding: 5px;
+}
+
+#user_email #edit_link {
+	display: none;
+}
+#user_email:hover #edit_link {
+	display: inline-block;
+} 
+
+.collapse_wrapper {
+	clear: both;
+	padding: 0.5em;
+	display: inline-block;
+	float: left;
+}
+
+.collapse {
+	/*display: inline-block;*/
+	padding-right: 1.5em;
+	margin-left: 2.5em;
+	margin-top: 1.5em;
+	/*float: left;*/
+}
+.controls {
+	float: left;
+}
+.collapse_wrapper .controls {
+	display: none;
+}
+
+.collapse_wrapper:hover .controls {
+	display: inline-block;
+}
+
+.user_page {
+	width: 30%;
+}

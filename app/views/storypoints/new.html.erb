@@ -1,0 +1,7 @@
+<h1>Storypoints#new</h1>
+
+<%= form_for([:plot,@storypoint]) do |strp| %>
+	<%= render 'fields', strp: strp %>
+		<%= strp.submit "Create stp" %>
+		
+<% end %>

@@ -1,0 +1,6 @@
+<%= form_for(@way) do |way| %>
+	<%= render 'way_fields', way: way %>
+
+	<%= way.submit "Make connection!"%>
+
+<% end %>

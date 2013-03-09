@@ -1,0 +1,13 @@
+<h1> Crop Your Image</h1>
+
+<%= image_tag @plot.poster_url(:large), id: 'cropbox_for_plot' %>
+
+<%= form_for(@plot) do |f| %>
+		<%= f.hidden_field :crop_x %>
+		<%= f.hidden_field :crop_y %>
+		<%= f.hidden_field :crop_w %>
+		<%= f.hidden_field :crop_h %>
+	<div class="actions">
+		<%= f.submit "Crop" %>
+	</div>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Storypoints#edit</h1>
+
+<%= form_for([Plot.find(@storypoint.plot_id),@storypoint]) do |strp| %>
+	<%= render 'fields', strp: strp %>
+
+	<%= strp.submit "edit storypoint!"%>
+
+<% end %>

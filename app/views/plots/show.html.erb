@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<!-- <div class = "plot_container"> -->
+<div class = "_info_with_links">
+  <div class = "_info">
+    <h2><%= @plot.name %></h2>
+
+    <p>
+      <b>Author:</b>
+      <%= link_to User.find(@plot.user_id).name, User.find(@plot.user_id) %>
+    </p>
+
+    <% if @plot.first_stp %>
+    <p>
+      <b>First stp:</b>
+      <%= link_to Storypoint.find(@plot.first_stp).name, plot_storypoint_path(@plot.id,@plot.first_stp) %>
+    </p>
+    <% end %>
+    <% unless @plot.storypoints.empty? %>
+    <p>
+    	<b>Has Storypoints:</b>
+    		<% @plot.storypoints.each do |stp| %> |
+    		<%= link_to stp.name, plot_storypoint_path(@plot,stp) %> |
+    		<% end %>
+    </p>
+    <% end %>
+  </div>
+
+  <div class = "new_edit_links">
+    <% if @plot.user_id == current_user.id %> 
+      <%= link_to 'Edit', edit_plot_path(@plot) %> |
+      <%= link_to 'New storypoint', new_plot_storypoint_path(@plot) %>
+      <br>
+      <%= button_to "Delete", plot_path(@plot), :method => :delete,
+                    data: {confirm: "Are you sure?"}, title: "Delete this" %>
+    <% end %>
+  </div>
+
+</div>
+
+  <% if @plot.poster.url %>
+    <div class = "_poster_show">
+      <%= link_to @plot.poster.url(:large) do %>
+      <%= image_tag @plot.poster.url(:plot_poster) %>
+      <% end %>
+    </div>
+  <% end %>
+<!-- </div> -->
+

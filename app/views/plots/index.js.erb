@@ -1,0 +1,11 @@
+$(".collapse").html.collapse({
+  open: function() {
+    // The context of 'this' is applied to
+    // the collapsed details in a jQuery wrapper 
+    this.slideDown(150);
+  },
+  close: function() {
+    this.slideUp(100);
+  },
+
+});

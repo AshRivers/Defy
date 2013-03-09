@@ -1,0 +1,62 @@
+
+<div class = "play_box">
+	<% if !@storypoint.image.blank? %>
+		<div class = "image_place">
+			<%= image_tag @storypoint.image.url(:container_size), id: "image-id"%>
+		</div>
+		<% if !@storypoint.story.empty? %>
+		<div class = "story_place">
+			<div class = "storytext">
+				<%= @storypoint.story %>
+			</div>	
+		</div>
+		<% end %>
+	<% else %>
+		<div class = "story_without_image_place">
+			<div class = "storytext">
+				<%= @storypoint.story %>
+			</div>
+		</div>
+	<% end %>
+	</div>
+	<script>
+    (function($){
+        $(window).load(function(){
+            $(".story_place").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+	<div class = "ways_place">
+		<% if !@storypoint.ways.empty? %>
+			<% @storypoint.ways.each do |way| %>
+				<%= link_to way.with_text, 
+						play_path(stp_id: way.to_storypoint) %> </br>
+			<% end %>
+		<% else %>
+			<%= link_to play_path(Plot.find_by_id(@storypoint.plot_id)), 
+										confirm: "Do you want to play plot again? " do %>
+				<i class = "icon-reload icon3x"></i>
+			<% end %>
+		<script type="text/javascript">
+		  $(document).ready(function(){
+		  // more complex Notify box call
+		  jNotify(
+		    "You've finished this plot! <br />You can start plot again by pressing <strong>reload</strong>",
+		    {
+		      autoHide : false, // added in v2.0
+		      TimeShown : 3000,
+		      HorizontalPosition : 'center'
+		  }
+		  ); // close jNotify
+		}); // close document.ready
+		</script>
+		<% end %>
+	</div>
+			<script type="text/javascript">
+			Caman("#image-id", function () {
+  				this.brightness(5)
+  				this.saturation(-50)
+  				this.contrast(8).render();
+			});
+		</script>
+

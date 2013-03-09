@@ -1,0 +1,49 @@
+<div class = "_info_with_links">
+  	<div class = "_info">
+		<h2><%= @storypoint.name %> <- 
+			<%= link_to 	Plot.find_by_id(@storypoint.plot_id).name,												Plot.find_by_id(@storypoint.plot_id) %>
+		(<%= form_for @storypoint, url: {action: "set_plot_id"} do |p| %>
+		<%= select_tag("plot_id",
+			options_for_select(Plot.all.collect {|plot| [plot.name,plot.id]})) %>
+		<%= p.submit "Change" %>
+		<% end %>)
+		</h2>
+		<p>
+			<b>Story:</b></br>
+			<div id = "_story">
+				<%= @storypoint.story %>
+			</div>
+			<%= javascript_include_tag "story_truncate" %>
+		</p>
+		<p><% unless @storypoint.ways.empty? %>
+				<% @storypoint.ways.each do |way| %>
+					Leads to: | <%= link_to 	way.with_text, 
+												plot_storypoint_path(Storypoint.find(way.to_storypoint).plot_id, way.to_storypoint) %> |
+				<% end %>
+			<% end %>
+		</p>
+	</div>
+
+	<div class = "new_edit_links">
+
+		<% if Plot.find(@storypoint.plot_id).user_id == current_user.id %>
+		<p>
+			<%= link_to 'Make connection', new_way_path(@storypoint.name) %>
+		</p>
+
+		<p>
+			<%= link_to 'Edit', edit_plot_storypoint_path(@storypoint.plot_id, @storypoint) %>
+		</p>
+
+		<% end %>
+	</div>
+</div>
+	
+<div class = "poster_wrapper">	
+	<% if @storypoint.image.url %>
+    	<div class = "_poster_show">
+			<%= image_tag @storypoint.image_url(:stp_thumb) if @storypoint.image? %>
+		</div>
+	<% end %>
+</div>
+		

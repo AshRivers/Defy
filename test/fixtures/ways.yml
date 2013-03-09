@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  from_storypoint: 1
+  to_storypoint: 1
+
+two:
+  from_storypoint: 1
+  to_storypoint: 1

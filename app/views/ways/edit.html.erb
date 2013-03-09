@@ -1,0 +1,7 @@
+<h1>Ways#destroy</h1>
+<%= form_for(@way) do |way| %>
+	<%= render 'way_fields', way: way %>
+
+	<%= way.submit "Edit connection!"%>
+
+<% end %>
