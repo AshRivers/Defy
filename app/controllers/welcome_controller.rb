@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def main
-  	@first_exp = Storypoint.first if Storypoint.first
+  	@first_exp = Storypoint.first
   end
 end
