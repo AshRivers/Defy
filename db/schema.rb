@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303193811) do
+ActiveRecord::Schema.define(:version => 20130311005344) do
 
   create_table "pictures", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(:version => 20130303193811) do
 
   create_table "storypoints", :force => true do |t|
     t.string   "name"
-    t.string   "story"
+    t.text     "story",      :limit => 255
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "plot_id"
   end
 
