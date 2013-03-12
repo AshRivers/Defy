@@ -65,30 +65,33 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :stp_thumb, from_version: :extra_large do
-    process crop: '800'
+    process :crop#: '800'
     prosecc :resize_to_fill => [200,200, :fill]
   end
 
   version :thumb do
-    process crop: '600'
+    process :crop#: '600'
     process :resize_to_fill => [100, 100, :fill]
   end
 
   version :plot_poster do
-    process crop: '600'
+    process :crop#: '600'
     process :resize_to_fill => [300,300, :fill]
   end
 
-  def crop(limit)
+  def crop
     if model.crop_x.present?
-      resize_to_limit(limit.to_i, limit.to_i)
+      # resize_to_limit(limit.to_i, limit.to_i)
       
-      return  
-        x: model.crop_x,
-        y: model.crop_y,
-        w: model.crop_w,
-        h: model.crop_h,
-        :crop => :crop
+      return :x => model.crop_x, :y => model.crop_y, 
+      :width => model.crop_w, :height => model.crop_h, :crop => :crop
+
+      # return  
+      #   x: :model.crop_x,
+      #   y: :model.crop_y,
+      #   w: :model.crop_w,
+      #   h: :model.crop_h,
+      #   :crop => :crop
 
     end
   end
