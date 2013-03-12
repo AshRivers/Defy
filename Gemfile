@@ -4,7 +4,7 @@ gem 'rails', '3.2.12'
 
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'carrierwave'
-gem 'mini_magick'
+# gem 'mini_magick'
 gem 'cloudinary'
 gem 'jquery-rails'
 # gem 'RMagick'

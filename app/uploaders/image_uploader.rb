@@ -4,7 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -31,13 +31,13 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 
   
-  def blur
-  manipulate! do |img|
-  img.blur('0x2')
-  img = yield(img) if block_given?
-  img
-  end
-  end
+  # def blur
+  # manipulate! do |img|
+  # img.blur('0x2')
+  # img = yield(img) if block_given?
+  # img
+  # end
+  # end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -59,38 +59,36 @@ class ImageUploader < CarrierWave::Uploader::Base
     # process :convert => ['-blur 0x8']
   end
 
-  version :to_play, from_version: :extra_large do
-    process crop: '800'
-    resize_to_fit(500,500)
-  end
+  # version :to_play, from_version: :extra_large do
+  #   process crop: '800'
+  #   resize_to_fit(500,500)
+  # end
 
   version :stp_thumb, from_version: :extra_large do
     process crop: '800'
-    resize_to_fill(200,200)
+    prosecc :resize_to_fill => [200,200, :fill]
   end
 
   version :thumb do
     process crop: '600'
-    resize_to_fill(100, 100)
+    process :resize_to_fill => [100, 100, :fill]
   end
 
   version :plot_poster do
     process crop: '600'
-    resize_to_fill(300,300)
+    process :resize_to_fill => [300,300, :fill]
   end
 
   def crop(limit)
     if model.crop_x.present?
       resize_to_limit(limit.to_i, limit.to_i)
-      manipulate! do |img|
-        x = model.crop_x
-        y = model.crop_y
-        w = model.crop_w
-        h = model.crop_h
-        img.crop "#{w}x#{h}+#{x}+#{y}"
-        # img.crop(par)
-        img
-      end
+      
+      return  
+        x: model.crop_x,
+        y: model.crop_y,
+        w: model.crop_w,
+        h: model.crop_h,
+        :crop => :crop
 
     end
   end
