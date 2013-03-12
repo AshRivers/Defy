@@ -17,27 +17,38 @@ class PlotsController < ApplicationController
   end
 
   def create
+    # @plot = current_user.plots.build(params[:plot])
+    # if @plot.save
+    #   if params[:plot][:poster].present?
+    #     render "plots/crop"
+    #   else
+    #     flash[:success] = "Welcome to Defy!"
+    #     redirect_to plots_path
+    #   end
+    # else
+    #   render "new"
+    # end
     @plot = current_user.plots.build(params[:plot])
     if @plot.save
-      if params[:plot][:poster].present?
-        render "plots/crop"
-      else
         flash[:success] = "Welcome to Defy!"
         redirect_to plots_path
-      end
     else
       render "new"
     end
   end
 
   def update
+    # @plot = Plot.find(params[:id])
+    # if @plot.update_attributes(params[:plot])
+    #   if params[:plot][:poster].present?
+    #     render "plots/crop"
+    #   else
+    #     redirect_to @plot
+    #   end
+    # end
     @plot = Plot.find(params[:id])
     if @plot.update_attributes(params[:plot])
-      if params[:plot][:poster].present?
-        render "plots/crop"
-      else
         redirect_to @plot
-      end
     end
   end
 

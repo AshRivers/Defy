@@ -37,11 +37,11 @@
 
 </div>
 
-  <% if @plot.poster.url %>
+  <% if @plot.poster_url %>
     <div class = "_poster_show">
-      <%= link_to @plot.poster_url(:large) do %>
+      
       <%= image_tag @plot.poster_url(:plot_poster) %>
-      <% end %>
+
     </div>
   <% end %>
 <!-- </div> -->

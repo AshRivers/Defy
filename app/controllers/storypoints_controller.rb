@@ -5,20 +5,24 @@ class StorypointsController < ApplicationController
   end
 
   def create
-    # @storypoint = Storypoint.new(params[:storypoint])
-    # params[:plot_id] == 0 ?  plot = Plot.find(params[:storypoint][:plot_id]) : 
-    #                         plot = Plot.find(params[:plot_id])
-
+    # @plot = Plot.find(params[:plot_id])
+    # @storypoint = @plot.storypoints.build(params[:storypoint])
+    # if @storypoint.save
+    #   if params[:storypoint][:image].present?
+    #     render "storypoints/crop"
+    #   else
+    #     flash[:success] = "Welcome to Defy!"
+    #     redirect_to storypoints_path
+    #   end
+    # else
+    #   flash.now[:error] = "Errors!"
+    #   render "new"
+    # end
     @plot = Plot.find(params[:plot_id])
     @storypoint = @plot.storypoints.build(params[:storypoint])
-    # plot.storypoints << @storypoint
     if @storypoint.save
-      if params[:storypoint][:image].present?
-        render "storypoints/crop"
-      else
         flash[:success] = "Welcome to Defy!"
         redirect_to storypoints_path
-      end
     else
       flash.now[:error] = "Errors!"
       render "new"
@@ -49,15 +53,21 @@ class StorypointsController < ApplicationController
   end
 
   def update
+    # @plot = Plot.find(params[:plot_id])
+    # @storypoint = Storypoint.find(params[:id])
+    # if @storypoint.update_attributes(params[:storypoint])
+    #   if params[:storypoint][:image].present?
+    #     render "crop"
+    #   else
+    #     flash[:success] = "Profile updated."
+    #     redirect_to plot_storypoint_path(@storypoint.plot_id,@storypoint)
+    #   end
+    # end
     @plot = Plot.find(params[:plot_id])
     @storypoint = Storypoint.find(params[:id])
     if @storypoint.update_attributes(params[:storypoint])
-      if params[:storypoint][:image].present?
-        render "crop"
-      else
         flash[:success] = "Profile updated."
         redirect_to plot_storypoint_path(@storypoint.plot_id,@storypoint)
-      end
     end
   end
 

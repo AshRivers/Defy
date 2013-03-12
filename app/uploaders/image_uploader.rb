@@ -4,9 +4,9 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
-  include Cloudinary::CarrierWave
 
+  include Cloudinary::CarrierWave
+  include CarrierWave::MiniMagick
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
@@ -14,6 +14,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -65,35 +68,43 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :stp_thumb, from_version: :extra_large do
-    process :crop#: '800'
+    # process :crop#: '800'
     process :resize_to_fill => [200,200]
   end
 
   version :thumb do
-    process :crop#: '600'
+    # process :crop#: '600'
     process :resize_to_fill => [100, 100]
   end
 
-  version :plot_poster do
-    process :crop#: '600'
-    # process :resize_to_fill => [300,300]
+  version :plot_poster, from_version: :large do
+    # crp = { "x" => 100, "y" => 100, "width" => 100, "height" => 100}
+    # process :crop
+    process :resize_to_fill => [300,300,:face]
+    # cloudinary_transformation :transformation => [{:x => 100,:y => 100,
+    #   :width => 100, :height => 100, :crop => :crop}, {effect: "sepia"}]
+
   end
 
   def crop
-    # if model.crop_x.present?
-      # resize_to_limit(limit.to_i, limit.to_i)
-      
-      return :x => model.crop_x, :y => model.crop_y, 
-      :width => model.crop_w, :height => model.crop_h, :crop => :crop
+    if model.crop_x.present?
+      resize_to_limit(600,600)
+      # cloudinary_transformation :transformation => [{:x => 100,:y => 100,
+      # :width => 100, :height => 100, :crop => :crop}, {effect: "sepia"}]
+      manipulate! do |img|
+      x = model.crop_x
+      y = model.crop_y
+      w = model.crop_w
+      h = model.crop_h
 
-      # return  
-      #   x: :model.crop_x,
-      #   y: :model.crop_y,
-      #   w: :model.crop_w,
-      #   h: :model.crop_h,
-      #   :crop => :crop
+      args = "#{w}x#{h}+#{x}+#{y}"
+      # w << 'x' << h << '+' << x << '+' << y
 
+      img.crop(args)
+      img
     end
+    end
+
   end
   # Create different versions of your uploaded files:
   # version :thumb do
