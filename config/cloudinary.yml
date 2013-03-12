@@ -1,0 +1,9 @@
+development:
+  cloud_name: "defy"
+  api_key: "661721787963493"
+  api_secret: "FIJEoXp5mrnXCSVd7pTUfv3PKkc"
+
+production:
+  cloud_name: "defy"
+  api_key: "661721787963493"
+  api_secret: "FIJEoXp5mrnXCSVd7pTUfv3PKkc"

@@ -4,9 +4,11 @@ gem 'rails', '3.2.12'
 
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'carrierwave'
+gem 'mini_magick'
+gem 'cloudinary'
 gem 'jquery-rails'
 # gem 'RMagick'
-gem 'mini_magick'
+
 # gem "rmagick", "~> 2.13.2"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
