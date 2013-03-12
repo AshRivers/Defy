@@ -75,6 +75,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :plot_poster do
+    process eager: true
     process :crop#: '600'
     process :resize_to_fill => [300,300]
   end
