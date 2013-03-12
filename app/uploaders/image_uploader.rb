@@ -66,7 +66,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :stp_thumb, from_version: :extra_large do
     process :crop#: '800'
-    prosecc :resize_to_fill => [200,200, :fill]
+    process :resize_to_fill => [200,200, :fill]
   end
 
   version :thumb do
