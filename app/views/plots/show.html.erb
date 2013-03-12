@@ -39,8 +39,8 @@
 
   <% if @plot.poster.url %>
     <div class = "_poster_show">
-      <%= link_to @plot.poster.url(:large) do %>
-      <%= image_tag @plot.poster.url(:plot_poster) %>
+      <%= link_to @plot.poster_url(:large) do %>
+      <%= image_tag @plot.poster_url(:plot_poster) %>
       <% end %>
     </div>
   <% end %>
