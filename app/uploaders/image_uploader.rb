@@ -19,6 +19,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def store_dir
   #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   # end
+  def cache_dir
+  "#{RAILS_ROOT}/tmp/uploads"
+end
+
   def store_dir
     "#{Rails.root}/tmp/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
@@ -107,7 +111,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   %w(jpg jpeg gif png)
   # end
   def extension_white_list
-    %w(jpg jpeg png)
+    %w(jpg png jpeg)
   end
 
   # Override the filename of the uploaded files:
