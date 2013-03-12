@@ -80,7 +80,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def crop
-    if model.crop_x.present?
+    # if model.crop_x.present?
       # resize_to_limit(limit.to_i, limit.to_i)
       
       return :x => model.crop_x, :y => model.crop_y, 
