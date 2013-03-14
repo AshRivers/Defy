@@ -5,34 +5,37 @@
 				<%= link_to "Root", root_path %>
 			</li>
 			<% if current_user %>
-			<li>
-				<%= link_to current_user.name, current_user %>
-			</li>
-			<li>
-				<%= link_to "StoryPoints", storypoints_path %>
-			</li>
-			<li>
-				<%= link_to "Ways", ways_path %>
-			</li>
-			<% if current_user.admin? %>
-			<li>
-				<%= link_to "Users", users_path %>
-			</li>
-			<% end %>
-			<li>
-				<%= link_to "Plots", plots_path %>
-			</li>
-			<li>
-				<%= link_to "Logout", logout_path %>
-			</li>
+				<li>
+					<%= link_to current_user.name, current_user %>
+				</li>
+				<li>
+					<%= link_to "StoryPoints", storypoints_path %>
+				</li>
+				<li>
+					<%= link_to "Ways", ways_path %>
+				</li>
+					<% if current_user.admin? %>
+						<li>
+							<%= link_to "Users", users_path %>
+						</li>
+					<% end %>
+				<li>
+					<%= link_to "Plots", plots_path %>
+				</li>
+				<li>
+					<%= link_to "Logout", logout_path %>
+				</li>
 			<% else %>
-			<li>
-				<%= link_to "Sign Up", sign_up_path %>
-			</li>
-			<li>
-				<%= link_to "Log In", login_path %>
-			</li>
+				<li>
+					<%= link_to "Sign Up", sign_up_path %>
+				</li>
+				<li>
+					<%= link_to "Log In", login_path %>
+				</li>
 			<% end %>	
+			<li id = "about_page">
+				<%= link_to "About", about_path %>
+			</li>
 		</ul>
 	</nav>
 </header>

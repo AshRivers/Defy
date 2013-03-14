@@ -1,10 +1,7 @@
 Defy::Application.routes.draw do
-  
-  get "pictures/index"
 
-  get "pictures/create"
-
-  get "pictures/destroy"
+  get "welcome/main"
+  get "welcome/about", as: :about
 
   get "log_in" => "sessions#new", as: :login
   get "log_out" => "sessions#destroy", as: :logout
@@ -26,10 +23,7 @@ Defy::Application.routes.draw do
 
   resources :users
   resources :sessions
-  get "welcome/main"
-
   resources :ways
-
   resources :pictures, only: [:index,:create, :destroy]
   #resources :storypoints do
   #      get "set_plot_id", on: :collection
