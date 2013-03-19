@@ -2,7 +2,7 @@
 <div class = "play_box">
 	<% if !@storypoint.image.blank? %>
 		<div class = "image_place">
-			<%= image_tag @storypoint.image.url(:container_size), id: "image-id"%>
+			<%= image_tag @storypoint.image_url(:container_size), id: "image-id"%>
 		</div>
 		<% if !@storypoint.story.empty? %>
 		<div class = "story_place">
